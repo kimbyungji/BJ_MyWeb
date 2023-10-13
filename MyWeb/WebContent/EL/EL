@@ -1,0 +1,32 @@
+### EL(Expression Language)
+ > EL이란? JSP에서 저장객체를 출력할 때, "스트립팅을 전혀 쓰지 않고 쓸 수 있는 기술"
+ > EL은 일종의 스크립트 언어로 자료 타입, 수치 연산, 논리연산, 비교연산자등을 제공하고, "표현식(<%= %>)을 대체" 할 수 있음
+ 
+ [EL의 사용법]
+ 표현식 => <%=value %>
+ EL => ${value}
+ 값을 찾는 순서 : page -> request -> session -> application
+ 
+ [EL 내부에서 사용하는 연산자]
+  1. 산술 : +, -, *, /, %
+  2. 관계 : ==, !-, <, <=, >, >=
+  3. 조건 : a ? b : c (삼항 조건식을 사용할 수 있음)
+  4. 논리 : &&(and), ||(or)
+  5. empty 연산자 : 데이터 값이 없으면 true, 있으면 false 반환
+  
+  [액션 태그와 EL]
+  액션 태그 : <jsp:getProperty name = "member" property="name"/>
+  EL	: ${member.name}
+  
+  [EL 내장 객체]
+    사용법 : ${내장객체.name}
+    
+	내장 객체					의미
+	1. pageScope			JSP의 page객체를 참조하는 객체
+	2. requestScope			JSP의 request객체를 참조하는 객체
+	3. sessionScope			JSP의 session객체를 참조하는 객체
+	4. applicationScope		JSP의 application객체를 참조하는 객체
+	5. param				요청파라미터를 참조하는 객체(키와 값이 1:1인 경우)
+	6. paramValues			요청파라미터(배열)를 참조하는 객체(키와 값이 1대 다수인 경우)
+	7. initParam			서블릿컨텍스트 초기화 파라미터를 참조하는 객체
+	8. cookie				쿠키 객체를 참조하는 객체
