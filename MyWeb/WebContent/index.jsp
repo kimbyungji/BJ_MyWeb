@@ -25,13 +25,13 @@
                      
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="img-responsive img-full" src="img/1.jpg">
+                                <img class="img-responsive img-full" src="/MyWeb/img/1.jpg">
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="img/2.jpg"> <!-- img-full 옵션 class -->
+                                <img class="img-responsive img-full" src="/MyWeb/img/2.jpg"> <!-- img-full 옵션 class -->
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="img/3.jpg">
+                                <img class="img-responsive img-full" src="/MyWeb/img/3.jpg">
                             </div>
                            
                         </div>
@@ -82,7 +82,7 @@
                     </h2>
                     <hr>
 		                <div class="inner" align="center">
-		                    <img class="img-responsive img-center" src="img/intro.jpg" alt=""><!-- img-border --> 
+		                    <img class="img-responsive img-center" src="/MyWeb/img/intro.jpg" alt=""><!-- img-border --> 
 		                    
 		                    <hr class="visible-xs">
 		                   

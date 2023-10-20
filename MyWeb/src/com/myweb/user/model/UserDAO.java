@@ -10,7 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.web.util.JdbcUtil;
+import com.myweb.util.JdbcUtil;
 
 public class UserDAO {
 	

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +15,10 @@
     <title>Welcome to MyWorld</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/MyWeb/css/bootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/MyWeb/css/business-casual.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath }/css/business-casual.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -62,15 +65,39 @@
                 <ul class="nav navbar-nav">
                 	
                     <li>
-                        <a href="/MyWeb/index.jsp">HOME</a>
+                        <a href="index.do">HOME</a>
                     </li>
                     <li>
-                        <a href="/MyWeb/member/member.jsp">Member</a>
+                        <a href="/MyWeb/member.do">Member</a>
                     </li>
                     <li>
-                        <a href="">BOARD</a>
+                        <a href="/MyWeb/board/list.board">BOARD</a>
                     </li>
                     
+                    
+                    
+                    <c:choose>
+                    <c:when test="${sessionScope.user_id != null }">                  
+                    	<li>
+                    		<a href="${pageContext.request.contextPath }/user/logout_ok.jsp">LOGOUT</a>
+                    	</li>
+                    	<li>
+                    		<a href="${pageContext.request.contextPath }/user/mypage.jsp">MYPAGE</a>
+                    	</li>	
+                    </c:when>
+                    
+                    <c:otherwise>
+                    	<li>
+                        	<a href="${pageContext.request.contextPath }/user/login.jsp">LOGIN</a>
+                    	</li>
+                    	<li>
+                       	 	<a href="${pageContext.request.contextPath }/user/join.jsp" style="color:red">JOIN</a>
+                   	 	</li>
+                    </c:otherwise>
+                    
+                    </c:choose>
+                    
+                    <%-- 
                     <%if(session.getAttribute("user_id")!=null){%>
                     		  
                     	<li>
@@ -88,7 +115,7 @@
                        	 	<a href="/MyWeb/user/join.jsp" style="color:red">JOIN</a>
                    	 	</li>
                     	<%}%>
-                  
+                  --%>
                 </ul>
             </div>
             
