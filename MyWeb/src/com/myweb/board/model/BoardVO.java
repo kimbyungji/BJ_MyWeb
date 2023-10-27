@@ -9,11 +9,12 @@ public class BoardVO {
 	private String content;
 	private Timestamp regdate;
 	private int hit;
+	private String file;
 	
 	// 기본 생성자
 	public BoardVO() {}
 
-	public BoardVO(int num, String writer, String title, String content, Timestamp regdate, int hit) {
+	public BoardVO(int num, String writer, String title, String content, Timestamp regdate, int hit, String file) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -21,6 +22,7 @@ public class BoardVO {
 		this.content = content;
 		this.regdate = regdate;
 		this.hit = hit;
+		this.file = file;
 	}
 
 	public int getNum() {
@@ -70,11 +72,21 @@ public class BoardVO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
+	
+	
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardVO [num=" + num + ", writer=" + writer + ", title=" + title + ", content=" + content + ", regdate="
-				+ regdate + ", hit=" + hit + "]";
+				+ regdate + ", hit=" + hit + ", file=" + file + "]";
 	}
 	
 }

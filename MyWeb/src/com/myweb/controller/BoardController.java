@@ -1,13 +1,18 @@
 package com.myweb.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.myweb.board.service.ContentServiceimpl;
 import com.myweb.board.service.DeleteServiceImpl;
@@ -16,6 +21,12 @@ import com.myweb.board.service.IBoardService;
 import com.myweb.board.service.RegistServiceimpl;
 import com.myweb.board.service.UpdateServiceImpl;
 
+
+@MultipartConfig(
+		fileSizeThreshold = 1024*1024,
+		maxFileSize = 1024*1024*50,
+		maxRequestSize = 1024*1024*50*5
+)
 
 @WebServlet("*.board")
 public class BoardController extends HttpServlet {
@@ -64,6 +75,27 @@ public class BoardController extends HttpServlet {
 			// 글 작성 페이지(view)로 이동
 			response.sendRedirect("board_write.jsp");
 		}else if(command.equals("/board/register.board")) {
+			// 파일 작업------------------------------------------------------------
+			Part filePart = request.getPart("file");
+			String fileName = filePart.getSubmittedFileName();
+			InputStream fis = filePart.getInputStream();
+			String realPath = request.getServletContext().getRealPath("/img");
+			System.out.println(fileName);
+			System.out.println(realPath);
+			
+			String filePath = realPath + File.separator + fileName;
+			System.out.println(filePath);
+			FileOutputStream fos = new FileOutputStream(filePath);
+			
+			byte[] buf = new byte[1024];
+			int size= 0 ;
+			while((size=fis.read(buf)) != -1) {
+				fos.write(buf,0,size);
+							
+			}
+			fos.close();
+			fis.close();
+			//-------------------------------------------------------------------
 			// 서비스 객체를 생성
 			service = new RegistServiceimpl();
 			service.execute(request, response);

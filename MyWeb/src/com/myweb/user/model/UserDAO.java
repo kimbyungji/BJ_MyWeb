@@ -1,6 +1,9 @@
 package com.myweb.user.model;
 
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,9 +89,10 @@ public class UserDAO {
 		int result = 0;
 		
 		String sql = "insert into users (id, pw, name, email, address) "
-				+ "values(?, ?, ?, ?, ?)";
+				+ "values(?, ?, ?, ?, ?)";				
 		
 		try {
+			
 			//conn = DriverManager.getConnection(url, user, password);
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -163,6 +167,7 @@ public class UserDAO {
 		return vo;
 	}
 	
+	
 	public int change(String id,String new_pw) {
 		int result = 0;
 		
@@ -232,11 +237,14 @@ public class UserDAO {
 		
 		return result;
 	}
+	
+	// 수정 메서드
 	public int update(UserVO vo) {
 		int result = 0;
 		String sql = "update users set name=?, email=?, address=? where id=? ";
 		
 		try {
+									
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getName());

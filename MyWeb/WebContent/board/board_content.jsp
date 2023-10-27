@@ -33,6 +33,14 @@
 						</td>
 					</tr>
 					<tr>
+						<td>파일</td>
+						<td colspan="3" height="120">
+							<pre>
+								${vo.file }	
+							</pre>			
+						</td>
+					</tr>
+					<tr>
 						<td colspan="4" align="center">
 							
 							<input type="button" value="목록" onclick="location.href='list.board?pageNum=${param.pageNum}'">

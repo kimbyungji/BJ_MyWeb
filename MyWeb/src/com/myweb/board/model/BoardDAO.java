@@ -41,15 +41,16 @@ public class BoardDAO {
 	private ResultSet rs = null;
 	
 	//------------ DAO 동작 메서드 구현 ...CRUD ------------
-	public void regist(String writer,String title,String content) {
-		
-		String sql = "insert into board(writer, title, content) values(?,?,?)";
+	public void regist(String writer,String title,String content, String file) {
+				
+		String sql = "insert into board(writer, title, content, file) values(?,?,?,?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, writer);
 			pstmt.setString(2, title);
 			pstmt.setString(3, content);
+			pstmt.setString(4, file);
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -116,9 +117,10 @@ public class BoardDAO {
 				vo.setNum(rs.getInt("num"));
 				vo.setWriter(rs.getString("writer"));
 				vo.setTitle(rs.getString("title"));
-				vo.setContent(rs.getString("content"));
+				vo.setContent(rs.getString("content"));;
 				vo.setRegdate(rs.getTimestamp("regdate"));
 				vo.setHit(rs.getInt("hit"));
+				vo.setFile(rs.getString("file"));
 			
 				list.add(vo);
 			}
@@ -176,6 +178,7 @@ public class BoardDAO {
 				vo.setContent(rs.getString("content"));
 				vo.setRegdate(rs.getTimestamp("regdate"));
 				vo.setHit(rs.getInt("hit"));
+				vo.setFile(rs.getString("file"));
 			}
 			
 		} catch (Exception e) {
@@ -186,8 +189,8 @@ public class BoardDAO {
 		
 		return vo;
 	}
-	public void update(String num, String title, String content) {
-		String sql = "update board set title=?, content=? where num=?";
+	public void update(String num, String title, String content, String file) {
+		String sql = "update board set title=?, content=? file=? where num=?";
 		
 		try {
 			conn = ds.getConnection();
@@ -195,6 +198,7 @@ public class BoardDAO {
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, num);
+			pstmt.setString(4, file);
 			
 			pstmt.executeUpdate();
 			

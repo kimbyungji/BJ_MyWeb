@@ -4,7 +4,7 @@
 	<%@ include file="/include/header.jsp"%>
 		<section>
 			<div align="center">
-				<form action="register.board" method="post" name="regform">
+				<form action="register.board" method="post" name="regform" enctype="multipart/form-data">
 					<h2>게시판 글작성 페이지</h2>
 					<table border="1" width="500">
 						<tr>
@@ -19,6 +19,12 @@
 							<td>글내용</td>
 							<td>
 								<textarea rows="10" style="width:100%;" name="content"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>파일</td>
+							<td>
+								<input type="file" name="file">
 							</td>
 						</tr>
 						<tr>

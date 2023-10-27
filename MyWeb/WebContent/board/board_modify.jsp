@@ -26,6 +26,12 @@
 							</td>
 						</tr>
 						<tr>
+							<td>파일</td>
+							<td>
+								<input type="file" name="file">
+							</td>
+						</tr>
+						<tr>
 							<!-- 글등록 메뉴 -->
 							<td colspan="2" align="center">
 								<input type="button" value="수정하기" onclick="modifyCheck()" >

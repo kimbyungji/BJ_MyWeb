@@ -12,8 +12,9 @@ public class UpdateServiceImpl implements IBoardService {
 		String num = (String)request.getParameter("num");
 		String title = (String)request.getParameter("title");
 		String content = (String)request.getParameter("content");
+		String file = (String)request.getParameter("file");
 		BoardDAO dao = BoardDAO.getInstance();
-		dao.update(num,title,content);
+		dao.update(num,title,content,file);
 
 	}
 
